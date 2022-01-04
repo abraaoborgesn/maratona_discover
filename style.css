@@ -70,7 +70,7 @@ a:hover {
 }
 
 .button.new {
-    display: inline-block;  /* Colocou inline-block pois se deixasse sem Display não daria para colocar o margin-bottom, pois é inline por natureza. E o display block ficaria até o final da linha selecionado. Então usou o inline-block, unindo as duas configurações */
+     display: inline-block;  /*Colocou inline-block pois se deixasse sem Display não daria para colocar o margin-bottom, pois é inline por natureza. E o display block ficaria até o final da linha selecionado. Então usou o inline-block, unindo as duas configurações */
     margin-bottom: .8rem;
 }
 

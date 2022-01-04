@@ -88,7 +88,6 @@ const Transaction = {
     }
 }
 
-
 const DOM = {
     transactionsContainer: document.querySelector('#data-table tbody'),
     
@@ -108,13 +107,13 @@ const DOM = {
 
         const CSSclass = transaction.amount > 0 ? "income" : "expense"
 
-        const amount = Utils.formatCurrency(transaction.amount)
+        const NewAmount = Utils.formatCurrency(transaction.amount)
 
         // const amount = transaction.amount.toLocaleString('pt-br',{style:'currency', currency: 'BRL'})
 
         const html = `        
             <td class="description">${transaction.description}</td>
-            <td class="${CSSclass}">${amount}</td>
+            <td class="${CSSclass}">${NewAmount}</td>
             <td class="date">${transaction.date}</td>
             <td>
                 <img onclick="Transaction.remove(${index})" src="assets/minus.svg" alt="Remover transação">
@@ -152,8 +151,8 @@ const Utils = {
     },
 
     formatAmount(value) {
-        value = Number(value.replace(/\,\./g, '')) * 100
-        return value
+        value = value *100
+        return Math.round(value)
     },
 
     formatDate(date) {
@@ -165,12 +164,18 @@ const Utils = {
 
 }
 
+    
+
 const Form = {
+
+    
 
     description: document.querySelector('input#description'),
     amount: document.querySelector('input#amount'),
     date: document.querySelector('input#date'),
 
+    
+    
     getValues() {
         return {
             description: Form.description.value,
@@ -223,9 +228,11 @@ const Form = {
             // Formatar os valores de amount e data
             const transaction = Form.formatValues()
 
+            // console.log(transaction)
+
             // Salvar/Adicionar na página inicial
             Transaction.add(transaction)
-
+            
             // Limpar os dados do formulário
             Form.clearFields()
 
